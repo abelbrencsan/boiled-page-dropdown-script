@@ -1,5 +1,5 @@
 /**
- * Dropdown - v1.0.0
+ * Dropdown - v1.0.1
  * Copyright 2020 Abel Brencsan
  * Released under the MIT License
  */
