@@ -85,7 +85,7 @@ Dropdown.prototype = function () {
 			item.element.classList.add(item.isOpenedClass);
 			item.element.parentNode.classList.add(item.hasOpenedDropdownClass);
 			item.element.setAttribute('aria-hidden','false');
-			if (item.setHeight) item.element.style.maxHeight = Array.prototype.reduce.call(item.element.childNodes, function(p, c) {return p + (c.offsetHeight || 0);}, 0) + 'px';
+			if (item.setHeight) item.element.style.maxHeight = dropdown.calcHeight.call(this, item.element);
 			item.isOpened = true;
 			if (item.openCallback) item.openCallback.call(item);
 		},
@@ -132,8 +132,16 @@ Dropdown.prototype = function () {
 		 */
 		recalcHeight: function(item) {
 			if (!item) item = this;
-			if (item.setHeight && item.isOpened) item.element.style.maxHeight = Array.prototype.reduce.call(item.element.childNodes, function(p, c) {return p + (c.offsetHeight || 0);}, 0) + 'px';
+			if (item.setHeight && item.isOpened) item.element.style.maxHeight = dropdown.calcHeight.call(this, item.element);
 			if (item.recalcHeightCallback) item.recalcHeightCallback.call(item);
+		},
+
+		/**
+		 * Calculate original height of dropdown's element. (private)
+		 * @param elem object
+		 */
+		calcHeight: function(elem) {
+			return elem.scrollHeight + 'px';
 		},
 
 		/**
