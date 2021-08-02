@@ -75,11 +75,3 @@ Parameter | Type | Required | Description
 
 `destroy()` - Destroy dropdown. It removes all related classes, attributes and events.
 
-### Check dropdown is initialized
-
-`getIsInitialized()` - Check dropdown is initialized or not. It returns `true` when it is initialized, `false` if not.
-
-### Check dropdown is opened
-
-`getIsOpened()` - Check dropdown is opened or not. It returns `true` when it is opened, `false` if not.
-

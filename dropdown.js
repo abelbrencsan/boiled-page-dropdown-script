@@ -1,5 +1,5 @@
 /**
- * Dropdown - v1.0.1
+ * Dropdown - v1.0.2
  * Copyright 2020 Abel Brencsan
  * Released under the MIT License
  */
@@ -112,7 +112,8 @@ Dropdown.prototype = function () {
 		 * @param closeIndependents bool
 		 */
 		closeAll: function(closeIndependents) {
-			for (var i = 0; i < dropdown.items.length; i++) {
+			var dropdownItemsLength = dropdown.items.length;
+			for (let i = 0; i < dropdownItemsLength; i++) {
 				if (closeIndependents) {
 					if (dropdown.items[i].isOpened) {
 						dropdown.items[i].close.call(this, dropdown.items[i]);
@@ -137,11 +138,11 @@ Dropdown.prototype = function () {
 		},
 
 		/**
-		 * Calculate original height of dropdown's element. (private)
-		 * @param elem object
+		 * Calculate maximum height of opened dropdown's element. (private)
+		 * @param item object
 		 */
-		calcHeight: function(elem) {
-			return elem.scrollHeight + 'px';
+		calcHeight: function(item) {
+			return item.scrollHeight + 'px';
 		},
 
 		/**
@@ -209,27 +210,13 @@ Dropdown.prototype = function () {
 			this.element.removeAttribute('aria-hidden');
 			this.isInitialized = false;
 			var index = dropdown.items.indexOf(this);
-			if(i != -1) dropdown.items.splice(index, 1);
+			if(index != -1) dropdown.items.splice(index, 1);
 			if (!dropdown.items.length) {
 				document.body.removeEventListener('keydown', dropdown.onEscKeydown);
 				document.body.removeEventListener('click', dropdown.onBodyClick);
 				document.body.removeEventListener('touchend', dropdown.onBodyClick);
 			}
 			if (this.destroyCallback) this.destroyCallback.call(this);
-		},
-
-		/**
-		 * Get value of "isInitialized" to be able to check dropdown is initialized or not. (public)
-		 */
-		getIsInitialized: function() {
-			return this.isInitialized;
-		},
-
-		/**
-		 * Get value of "isOpened" to be able to check dropdown is opened or not. (public)
-		 */
-		getIsOpened: function() {
-			return this.isOpened;
 		}
 	};
 
@@ -238,9 +225,7 @@ Dropdown.prototype = function () {
 		open: dropdown.open,
 		close: dropdown.close,
 		recalcHeight: dropdown.recalcHeight,
-		destroy: dropdown.destroy,
-		getIsInitialized: dropdown.getIsInitialized,
-		getIsOpened: dropdown.getIsOpened
+		destroy: dropdown.destroy
 	};
 
 }();
