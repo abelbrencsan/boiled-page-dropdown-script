@@ -113,7 +113,7 @@ Dropdown.prototype = function () {
 		 */
 		closeAll: function(closeIndependents) {
 			var dropdownItemsLength = dropdown.items.length;
-			for (let i = 0; i < dropdownItemsLength; i++) {
+			for (var i = 0; i < dropdownItemsLength; i++) {
 				if (closeIndependents) {
 					if (dropdown.items[i].isOpened) {
 						dropdown.items[i].close.call(this, dropdown.items[i]);
