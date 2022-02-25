@@ -1,5 +1,5 @@
 /**
- * Dropdown - v1.1.0
+ * Dropdown - v1.1.1
  * Copyright 2021 Abel Brencsan
  * Released under the MIT License
  */
@@ -101,7 +101,7 @@ Dropdown.prototype = function () {
 			item.element.classList.remove(item.isOpenedClass);
 			item.element.parentNode.classList.remove(item.hasOpenedDropdownClass);
 			item.element.setAttribute('aria-hidden','true');
-			if (item.setHeight) item.element.style.maxHeight = '0px';
+			if (item.setHeight) item.element.style.maxHeight = '';
 			item.isOpened = false;
 			if (item.element.contains(document.activeElement)) item.trigger.focus();
 			if (item.closeCallback) item.closeCallback.call(item);
