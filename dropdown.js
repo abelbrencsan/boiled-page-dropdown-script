@@ -157,7 +157,7 @@ Dropdown.prototype = function () {
 		 * @param event object
 		 */
 		onEscKeydown: function(event) {
-			if (event.keyCode == 27) dropdown.closeAll(true);
+			if (event.key == 'Escape') dropdown.closeAll(true);
 		},
 
 		/**
