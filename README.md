@@ -49,7 +49,7 @@ Option| Type | Default | Required | Description
 
 ### Open dropdown by given instance
 
-`open(instance)` - Open given dropdown instance and optionally set maximum height of it.
+`open(instance)` - Open current or given dropdown instance.
 
 Parameter | Type | Required | Description
 ----------|------|----------|------------
@@ -57,7 +57,7 @@ Parameter | Type | Required | Description
 
 ### Close dropdown by given instance
 
-`close(instance)` - Close given dropdown instance and reset maximum height of it.
+`close(instance)` - Close current or given dropdown instance.
 
 Parameter | Type | Required | Description
 ----------|------|----------|------------
@@ -65,7 +65,7 @@ Parameter | Type | Required | Description
 
 ### Recalculate maximum height of dropdown element by given instance
 
-`recalcHeight(instance)` - Recalculate maximum height of given dropdowns' height. Call this function when inner height has been changed.
+`recalcHeight(instance)` - Recalculate maximum height of given dropdown.
 
 Parameter | Type | Required | Description
 ----------|------|----------|------------
@@ -73,5 +73,5 @@ Parameter | Type | Required | Description
 
 ### Destroy dropdown
 
-`destroy()` - Destroy dropdown. It removes all related classes, attributes and events.
+`destroy()` - Destroy dropdown.
 

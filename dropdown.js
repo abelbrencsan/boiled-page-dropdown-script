@@ -80,7 +80,7 @@ Dropdown.prototype = function () {
 		},
 
 		/**
-		 * Open given dropdown instance and optionally set maximum height of it.
+		 * Open current or given dropdown instance.
 		 * 
 		 * @public
 		 * @param {Dropdown} item
@@ -100,7 +100,7 @@ Dropdown.prototype = function () {
 		},
 
 		/**
-		 * Close given dropdown instance and reset maximum height of it.
+		 * Close current or given dropdown instance.
 		 * 
 		 * @public
 		 * @param {Dropdown} item
@@ -119,21 +119,7 @@ Dropdown.prototype = function () {
 		},
 
 		/**
-		 * Close all dropdowns except independent ones.
-		 * 
-		 * @private
-		 */
-		closeAll: function() {
-			for (let i = 0; i < dropdown.items.length; i++) {
-				if (dropdown.items[i].isOpened && !dropdown.items[i].isIndependent) {
-					dropdown.items[i].close.call(this, dropdown.items[i]);
-				}
-			}
-		},
-
-		/**
-		 * Recalculate maximum height of given dropdowns' height.
-		 * Call this function when inner height has been changed.
+		 * Recalculate maximum height of given dropdown.
 		 * 
 		 * @public
 		 * @param {Dropdown} item
@@ -147,10 +133,24 @@ Dropdown.prototype = function () {
 		},
 
 		/**
-		 * Calculate maximum height of opened dropdown's element.
+		 * Close all dropdowns except independent ones.
+		 * 
+		 * @private
+		 */
+		closeAll: function() {
+			for (let i = 0; i < dropdown.items.length; i++) {
+				if (dropdown.items[i].isOpened && !dropdown.items[i].isIndependent) {
+					dropdown.items[i].close.call(this, dropdown.items[i]);
+				}
+			}
+		},
+
+		/**
+		 * Calculate maximum height of given element.
 		 * 
 		 * @private
 		 * @param {Element} elem
+		 * @return {string}
 		 */
 		calcHeight: function(elem) {
 			return elem.scrollHeight + 'px';
@@ -167,7 +167,7 @@ Dropdown.prototype = function () {
 		},
 
 		/**
-		 * Close dropdown when focus is out of it.
+		 * Close dropdown when focus occurs outside of it.
 		 * 
 		 * @private
 		 * @param {Event} event
@@ -193,10 +193,10 @@ Dropdown.prototype = function () {
 
 		/**
 		 * Handle events.
-		 * On trigger click: close or open dropdown and close all other dropdowns.
+		 * On trigger click: close or open target dropdown, close all other dropdowns.
 		 * On close trigger click: close dropdown.
 		 * 
-		 * @public
+		 * @private
 		 * @param {Event} event
 		 */
 		handleEvents: function(event) {
@@ -229,7 +229,6 @@ Dropdown.prototype = function () {
 
 		/**
 		 * Destroy dropdown.
-		 * It removes all related classes, attributes and events.
 		 * 
 		 * @public
 		 */
